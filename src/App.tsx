@@ -1,122 +1,144 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import wolfMedallion from "./assets/medallions/wolf_medallion.png";
+import catMedallion from "./assets/medallions/cat_medallion.png";
+import griffinMedallion from "./assets/medallions/griffin_medallion.png";
+import bearMedallion from "./assets/medallions/bear_medallion.png";
+import viperMedallion from "./assets/medallions/viper_medallion.png";
+import manticoreMedallion from "./assets/medallions/manticore_medallion.png";
+
+import { useState } from "react";
+import { questions } from "./data/questions";
+import { schools } from "./data/schools";
+import { calculateRanking } from "./engine/inference";
+
+const medallions: Record<string, string> = {
+  wolf: wolfMedallion,
+  cat: catMedallion,
+  griffin: griffinMedallion,
+  bear: bearMedallion,
+  viper: viperMedallion,
+  manticore: manticoreMedallion,
+};
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [started, setStarted] = useState(false);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({});
+  const [finished, setFinished] = useState(false);
+
+  function handleAnswer(answerIndex: number) {
+    const question = questions[currentQuestionIndex];
+
+    setSelectedAnswers((previousAnswers) => ({
+      ...previousAnswers,
+      [question.id]: answerIndex,
+    }));
+
+    if (currentQuestionIndex === questions.length - 1) {
+      setFinished(true);
+    } else {
+      setCurrentQuestionIndex((previousIndex) => previousIndex + 1);
+    }
+  }
+
+  function restartQuiz() {
+    setStarted(false);
+    setCurrentQuestionIndex(0);
+    setSelectedAnswers({});
+    setFinished(false);
+  }
+
+  if (!started) {
+    return (
+      <main>
+        <h1>Discover Your Witcher School</h1>
+        <p>
+          Answer a series of questions to discover which Witcher
+          school best matches your personality.
+        </p>
+        <button onClick={() => setStarted(true)}>
+          Begin the Trial
+        </button>
+      </main>
+    );
+  }
+
+  if (finished) {
+    const ranking = calculateRanking(selectedAnswers);
+    const winner = schools.find(
+      (school) => school.id === ranking[0]?.schoolId
+    );
+
+    return (
+      <main>
+        <h1>Your Witcher School</h1>
+
+
+        {winner && (
+          <section className="winner">
+            <img
+              className="winner-medallion"
+              src={medallions[winner.id]}
+              alt={`${winner.name} medallion`}
+            />
+
+            <p className="winner-label">Your destiny has been revealed</p>
+
+            <h2>{winner.name}</h2>
+
+            <div className="winner-divider">✦ ━━━━━ ✦</div>
+
+            <p>{winner.description}</p>
+
+            <p className="winner-score">
+              Your score: {ranking[0].score} points
+            </p>
+          </section>
+        )}
+
+
+        <h2>Full Ranking</h2>
+        <ol>
+          {ranking.map((result) => {
+            const school = schools.find(
+              (item) => item.id === result.schoolId
+            );
+
+            return (
+              <li key={result.schoolId}>
+                {school?.name}: {result.score} points
+              </li>
+            );
+          })}
+        </ol>
+
+        <button onClick={restartQuiz}>Try Again</button>
+      </main>
+    );
+  }
+
+
+  const question = questions[currentQuestionIndex];
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <main>
+      <p>
+        Question {currentQuestionIndex + 1} of {questions.length}
+      </p>
 
-      <div className="ticks"></div>
+      <h1>{question.text}</h1>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      <div>
+        {question.answers.map((answer, index) => (
+          <button
+            key={index}
+            onClick={() => handleAnswer(index)}
+          >
+            {answer.text}
+          </button>
+        ))}
+      </div>
+    </main>
+  );
 }
 
-export default App
+export default App;
