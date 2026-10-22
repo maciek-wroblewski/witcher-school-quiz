@@ -102,7 +102,7 @@ export const questions: Question[] = [
                 }
             },
             {
-                text: "Timing - recognising the devisive moment and striking without hesitation.",
+                text: "Timing - recognising the decisive moment and striking without hesitation.",
                 scores: {
                     viper: 3,
                     cat: 2,
