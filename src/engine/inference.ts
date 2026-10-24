@@ -18,7 +18,7 @@ const traitIds: TraitId[] = [
     "preparation",
 ]
 
-export function calculateRanking(selectedAnswers: Record<number, number>): SchoolResult[] {
+export function calculateUserProfile(selectedAnswers: Record<number, number>): TraitProfile {
     const traitScores: TraitProfile = {
         adaptability: 0,
         independence: 0,
@@ -72,6 +72,12 @@ export function calculateRanking(selectedAnswers: Record<number, number>): Schoo
 
         userProfile[trait] = max > 0 ? 1 + (traitScores[trait] / max) * 4 : 1;
     }
+
+    return userProfile;
+}
+
+export function calculateRanking(selectedAnswers: Record<number, number>): SchoolResult[] {
+    const userProfile = calculateUserProfile(selectedAnswers);
 
     return schools.map((school) => {
         let squaredDistance = 0;

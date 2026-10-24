@@ -234,3 +234,24 @@ li::marker {
     }
 }
 
+.trait-section {
+    width: 100%;
+    max-width: 600px;
+    margin: 40px auto 0;
+    text-align: center;
+}
+
+.trait-section h2 {
+    margin-bottom: 10px;
+}
+
+.trait-section p {
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+.trait-radar {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}

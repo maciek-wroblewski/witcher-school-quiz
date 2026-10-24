@@ -5,10 +5,13 @@ import bearMedallion from "./assets/medallions/bear_medallion.png";
 import viperMedallion from "./assets/medallions/viper_medallion.png";
 import manticoreMedallion from "./assets/medallions/manticore_medallion.png";
 
+import TraitRadar from "./components/TraitRadar";
+
 import { useState } from "react";
 import { questions } from "./data/questions";
 import { schools } from "./data/schools";
 import { calculateRanking } from "./engine/inference";
+import { calculateUserProfile } from "./engine/inference";
 
 const medallions: Record<string, string> = {
   wolf: wolfMedallion,
@@ -90,10 +93,21 @@ function App() {
             <p>{winner.description}</p>
 
             <p className="winner-score">
-              Your score: {ranking[0].score} points
+              Your compatibility with this school: {ranking[0].score}%
             </p>
           </section>
         )}
+
+        <section className="trait-section">
+          <h2>Your Witcher Profile</h2>
+          <p>
+            Your answers reveal the traits that define your approach to the Path.
+          </p>
+
+          <TraitRadar
+            profile={calculateUserProfile(selectedAnswers)}
+          />
+        </section>
 
 
         <h2>Full Ranking</h2>
@@ -105,7 +119,7 @@ function App() {
 
             return (
               <li key={result.schoolId}>
-                {school?.name}: {result.score} points
+                {school?.name}: {result.score}%
               </li>
             );
           })}
