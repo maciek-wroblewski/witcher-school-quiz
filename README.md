@@ -4,6 +4,8 @@ An interactive personality quiz inspired by The Witcher universe.
 
 Discover which Witcher School best matches your personality!
 
+[Play the Quiz](https://maciek-wroblewski.github.io/witcher-school-quiz/)
+
 ## Features
 
 - **Personality quiz** - answer 10 questions to discover your Witcher School.
