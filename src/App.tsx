@@ -22,6 +22,23 @@ const medallions: Record<string, string> = {
   manticore: manticoreMedallion,
 };
 
+
+function DisclaimerFooter() {
+  return (
+    <footer className="site-footer">
+      <p>
+        This is an unofficial fan-made project inspired by The Witcher
+        universe. It is not affiliated with, endorsed by, or sponsored
+        by CD PROJEKT RED.
+      </p>
+      <p>
+        The Witcher and related names and trademarks belong to their
+        respective owners.
+      </p>
+    </footer>
+  );
+}
+
 function App() {
   const [started, setStarted] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -61,6 +78,8 @@ function App() {
         <button onClick={() => setStarted(true)}>
           Begin the Trial
         </button>
+
+        <DisclaimerFooter />
       </main>
     );
   }
@@ -133,6 +152,8 @@ function App() {
 
 
         <button onClick={restartQuiz}>Try Again</button>
+
+        <DisclaimerFooter />
       </main>
     );
   }
@@ -158,6 +179,8 @@ function App() {
           </button>
         ))}
       </div>
+      
+      <DisclaimerFooter />
     </main>
   );
 }

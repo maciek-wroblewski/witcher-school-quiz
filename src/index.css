@@ -323,3 +323,31 @@ li::marker {
         margin: 0 auto;
     }
 }
+
+
+.site-footer {
+    width: 100%;
+    max-width: 900px;
+    box-sizing: border-box;
+    margin: 48px auto 0;
+    padding: 18px 20px 12px;
+    border-top: 1px solid rgba(105, 72, 39, 0.3);
+    text-align: center;
+    color: #785f43;
+    font-family: "IM Fell English", serif;
+    font-size: 12px;
+    line-height: 1.7;
+    opacity: 0.85;
+}
+
+.site-footer p {
+    margin: 4px 0;
+}
+
+@media (max-width: 600px) {
+    .site-footer {
+        margin-top: 32px;
+        padding: 16px 8px 8px;
+        font-size: 11px;
+    }
+}
