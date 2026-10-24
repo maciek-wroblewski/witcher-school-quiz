@@ -1,17 +1,32 @@
-import { schools } from "../data/schools";
+import { schools, type TraitId } from "../data/schools";
 import { questions } from "../data/questions";
 
 export type SchoolResult = {
     schoolId: string;
     score: number;
+    distance: number;
 };
 
-export function calculateRanking(selectedAnswers: Record<number, number>): SchoolResult[] {
-    const scores: Record<string, number> = {}
+export type TraitProfile = Record<TraitId, number>;
 
-    for (const school of schools) {
-        scores[school.id] = 0;
-    }
+const traitIds: TraitId[] = [
+    "adaptability",
+    "independence",
+    "knowledge",
+    "endurance",
+    "strategy",
+    "preparation",
+]
+
+export function calculateRanking(selectedAnswers: Record<number, number>): SchoolResult[] {
+    const traitScores: TraitProfile = {
+        adaptability: 0,
+        independence: 0,
+        knowledge: 0,
+        endurance: 0,
+        strategy: 0,
+        preparation: 0,
+    };
 
     for (const question of questions) {
         const selectedIndex = selectedAnswers[question.id];
@@ -26,16 +41,55 @@ export function calculateRanking(selectedAnswers: Record<number, number>): Schoo
             continue;
         }
 
-        for (const [schoolId, points] of Object.entries(answer.scores)) {
-            if (points !==undefined && scores[schoolId] !== undefined) {
-                scores[schoolId] += points;
+        for (const [trait, points] of Object.entries(answer.scores)) {
+            if (trait in traitScores && points !==undefined) {
+                traitScores[trait as TraitId] += points;
             }
         }
     }
 
-    return schools.map((school) => ({
-        schoolId: school.id, 
-        score: scores[school.id],
-    }))
-    .sort((a, b) => b.score - a.score);
+    const maxTraitScores: TraitProfile = {
+        adaptability: 0,
+        independence: 0,
+        knowledge: 0,
+        endurance: 0,
+        strategy: 0,
+        preparation: 0,
+    }
+
+    for (const question of questions) {
+        for (const trait of traitIds) {
+            const maxForQuestion = Math.max(0, ...question.answers.map((answer) => answer.scores[trait] ?? 0));
+
+            maxTraitScores[trait] += maxForQuestion
+        }
+    }
+
+    const userProfile: TraitProfile = { ...traitScores };
+
+    for (const trait of traitIds) {
+        const max = maxTraitScores[trait]
+
+        userProfile[trait] = max > 0 ? 1 + (traitScores[trait] / max) * 4 : 1;
+    }
+
+    return schools.map((school) => {
+        let squaredDistance = 0;
+    
+        for (const trait of traitIds) {
+            const difference = userProfile[trait] - school.traits[trait];
+
+            squaredDistance += difference * difference;
+        }
+        
+        const distance = Math.sqrt(squaredDistance);
+
+        return {
+            schoolId: school.id,
+            distance,
+            score: Math.round((1 - distance / (4 * Math.sqrt(traitIds.length))) * 100),
+        };
+    })
+
+    .sort((a, b) => a.distance - b.distance);
 }
