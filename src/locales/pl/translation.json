@@ -1,0 +1,167 @@
+{
+    "app": {
+        "title": "Odkryj swoją szkołę wiedźmińską",
+        "intro": "Odpowiedz na serię pytań i odkryj, która szkoła wiedźmińska najbardziej pokrywa się z twoją osobowością.",
+        "begin": "Rozpocznij Próbę",
+        "question": "Pytanie {{current}} z {{total}}",
+        "resultTitle": "Twoja szkoła wiedźmińska",
+        "destiny": "Poznaj swoje przeznaczenie",
+        "compatibility": "Dopasowanie do tej szkoły: {{score}}%",
+        "profileTitle": "Twój profil wiedźmiński",
+        "profileDescription": "Twoje odpowiedzi ujawniają cechy, które określają Twoje podejście do wiedźmińskiego Szlaku.",
+        "ranking": "Pełny ranking",
+        "tryAgain": "Spróbuj ponownie",
+        "disclaimer": "To nieoficjalny projekt fanowski inspirowany uniwersum Wiedźmina. Nie jest powiązany z CD PROJEKT RED ani przez tę firmę zatwierdzony czy sponsorowany.",
+        "disclaimerRights": "Wiedźmin oraz powiązane nazwy i znaki towarowe należą do ich prawowitych właścicieli."
+    },
+    "questions": {
+        "1": {
+            "text": "Jak podchodzisz do starcia z nieznanym potworem?",
+            "answers": [
+                "Najpierw szukam informacji, ale przygotowuję się do sytuacji, w której będę musiał improwizować.",
+                "Obserwuję ruchy bestii i szukam słabego punktu, który mogę wykorzystać.",
+                "Rozpoznaję gatunek potwora i ustalam, jakie metody będą najskuteczniejsze w walce z nim.",
+                "Przygotowuję się na ciężką walkę, nawet jeśli nie wiem dokładnie jaki będzie jej przebieg.",
+                "Badam zachowanie bestii i czekam na idealny moment, by zadać decydujący cios.",
+                "Przygotowuję odpowiednie eliksiry, oleje i bomby, uwzględniając zagrożenia, na które mogę natrafić."
+            ]
+        },
+        "2": {
+            "text": "Co liczy się dla ciebie najbardziej podczas polowania?",
+            "answers": [
+                "Zdolność adaptacji - umiejętność zmiany taktyki, gdy pierwotny plan zawiedzie.",
+                "Szybkość i precyzja - chcę zakończyć walkę, zanim przeciwnik przejmie inicjatywę.",
+                "Wiedza i kontrola - zrozumienie przeciwnika i umiejętne wykorzystanie dostępnych narzędzi.",
+                "Wytrzymałość - zdolność przetrwania wszystkiego, co przeciwnik może mi zgotować.",
+                "Wyczucie chwili - oczekiwanie na dogodny moment i wykorzystanie sytuacji bez wahania.",
+                "Przygotowanie - pewność, że sprzęt, który posiadam jest odpowiedni do wykonania zadania."
+            ]
+        },
+        "3": {
+            "text": "Zleceniodawca coś przed tobą ukrywa. Co robisz?",
+            "answers": [
+                "Sprawdzam fakty i na ich podstawie podejmuję rozsądną decyzję.",
+                "Nie ufam nikomu bezgranicznie. Prowadzę własne dochodzenie i szukam ukrytych motywów.",
+                "Porównuję jego słowa z dowodami i szukam nieścisłości w jego wersji wydarzeń.",
+                "Oceniam, jakie niebezpieczeństwo niesie sytuacja, i upewniam się, że nic mnie nie zaskoczy.",
+                "Zachowuję podejrzenia dla siebie i obserwuję, co zleceniodawca zrobi dalej.",
+                "Analizuję ryzyko i zastanawiam się, czy zlecenie jest warte potencjalnych kosztów."
+            ]
+        },
+        "4": {
+            "text": "Twój plan legł w gruzach, a sytuacja staje się niebezpieczna. Co robisz?",
+            "answers": [
+                "Zmieniam taktykę i wykorzystuję wszystko, co akurat mam pod ręką.",
+                "Szukam luki w obronie przeciwnika i próbuję odwrócić sytuację, zanim zdąży zareagować.",
+                "Zachowuję spokój, ponownie oceniam sytuację i wykorzystuję zdobytą wiedzę.",
+                "Nie ustępuję i wytrzymuję presję, dopóki nie odzyskam przewagi.",
+                "Nie działam pochopnie. Czekam na okazję, by znów przejąć kontrolę.",
+                "Oszczędzam zasoby i szukam najbezpieczniejszego sposobu na wyjście z opresji."
+            ]
+        },
+        "5": {
+            "text": "Jaki typ wiedzy cenisz najbardziej?",
+            "answers": [
+                "Praktyczną wiedzę, która pomaga radzić sobie w nieprzewidywalnych sytuacjach.",
+                "Wiedzę o ludziach, ich słabościach i sposobie myślenia.",
+                "Historię, teorię, magię i uporządkowane rozumienie świata.",
+                "Umiejętności przetrwania, doświadczenie bojowe i wiedzę zdobytą w trudach.",
+                "Informacje, które pozwalają przewidywać zagrożenia i przechytrzyć przeciwnika.",
+                "Alchemię, właściwości substancji i praktyczne zastosowanie rzadkich składników."
+            ]
+        },
+        "6": {
+            "text": "Jak podchodzisz do problemu, który nie ma oczywistego rozwiązania?",
+            "answers": [
+                "Łączę różne metody i sprawdzam, co najlepiej sprawdza się w praktyce.",
+                "Podważam przyjęte założenia i szukam rozwiązania, którego inni nie dostrzegli.",
+                "Dzielę problem na mniejsze części i analizuję go krok po kroku.",
+                "Skupiam się na tym, co najważniejsze, i pokonuję kolejne przeszkody dzięki wytrwałości.",
+                "Szukam ukrytych powiązań i przewiduję konsekwencje każdego ruchu.",
+                "Oceniam dostępne zasoby i wybieram najefektywniejsze rozwiązanie."
+            ]
+        },
+        "7": {
+            "text": "Jak podchodzisz do ryzyka?",
+            "answers": [
+                "Podejmuję przemyślane ryzyko, o ile w razie problemów potrafię dostosować swoje działanie.",
+                "Jestem gotów zaryzykować, jeśli potencjalne korzyści są tego warte.",
+                "Wolę ograniczać niepewność dzięki wiedzy, dyscyplinie i przygotowaniu.",
+                "Nie uciekam przed niebezpieczeństwem, jeśli wierzę, że zdołam stawić mu czoła.",
+                "Ryzykuję tylko wtedy, gdy rozumiem sytuację i widzę realną drogę do sukcesu.",
+                "Zanim podejmę decyzję, rozważam koszty, korzyści i dostępne zasoby."
+            ]
+        },
+        "8": {
+            "text": "Która z twoich słabości mogłaby najbardziej zagrozić ci na Szlaku?",
+            "answers": [
+                "Branie na siebie zbyt dużej odpowiedzialności za rozwiązywanie cudzych problemów.",
+                "Buntowanie się przeciwko autorytetom, nawet gdy współpraca bywa skuteczniejsza.",
+                "Nadmierne analizowanie sytuacji, chcąc zrozumieć każdy szczegół.",
+                "Upór, przez który trudno mi porzucić stare metody, które przestały się sprawdzać.",
+                "Przesadna ostrożność i trudność w obdarzaniu innych zaufaniem.",
+                "Zbyt duże poleganie na przygotowaniu i sprawdzonych metodach."
+            ]
+        },
+        "9": {
+            "text": "Ktoś próbuje wyprowadzić cię z równowagi. Jak reagujesz?",
+            "answers": [
+                "Zastanawiam się, czy warto reagować, i dostosowuję swoją odpowiedź do sytuacji.",
+                "Nie pozwalam, by ktoś narzucał mi warunki. Reaguję w sposób, którego się nie spodziewa.",
+                "Zachowuję spokój i nie pozwalam, by emocje przesłoniły mi osąd.",
+                "Nie ustępuję, zwłaszcza gdy ktoś próbuje mnie zastraszyć.",
+                "Nie zdradzam zbyt wiele i nie daję drugiej osobie przewagi.",
+                "Nie tracę energii na prowokacje, które nie przynoszą żadnych korzyści."
+            ]
+        },
+        "10": {
+            "text": "Odkrywasz, że potwór jest inteligentny i zdolny do negocjacji. Co robisz?",
+            "answers": [
+                "Próbuję zrozumieć jego motywy i znaleźć rozwiązanie, które pozwoli zapobiec niepotrzebnemu rozlewowi krwi.",
+                "Zachowuję czujność i szukam sposobu, by przechylić negocjacje na swoją korzyść.",
+                "Staram się zrozumieć jego naturę i sposób myślenia oraz ocenić, czy współistnienie jest możliwe.",
+                "Zachowuję ostrożność i upewniam się, że będę w stanie się obronić, jeśli rozmowy przerodzą się we wrogość.",
+                "Uważnie słucham, ukrywam swoje zamiary i oceniam, czy jego słowa nie skrywają zagrożenia.",
+                "Rozważam możliwe konsekwencje i decyduję, czy warto podejmować ryzyko związane z kontaktem."
+            ]
+        }
+    },
+"schools": {
+  "wolf": {
+    "name": "Szkoła Wilka",
+    "description": "Są to zrównoważeni, wytrzymali i niezwykle wszechstronni wojownicy, którzy łączą klasyczną, precyzyjną sztukę walki mieczem z magią i alchemią, zamiast polegać na ciężkiej zbroi czy brutalnej sile. Wiedźmini z tej szkoły cenią sobie rozsądną ocenę sytuacji i praktyczne doświadczenie. Rozumieją, że przetrwanie na Szlaku wymaga czegoś więcej niż tylko siły."
+  },
+  "cat": {
+    "name": "Szkoła Kota",
+    "description": "Szkoła Kota kojarzy się z szybkością, precyzją, niezależnością i niekonwencjonalnym podejściem do walki. Jej wiedźmini stawiają na zwinność i chętnie wykorzystują słabości, które inni mogliby przeoczyć. Szkoła Kota nie jest dla tych, którzy potrzebują jasnych zasdad, nagradza przebiegłość i umiejętność zdecydowanego działania."
+  },
+  "griffin": {
+    "name": "Szkoła Gryfa",
+    "description": "Szkoła Gryfa kładzie ogromny nacisk na dyscyplinę, wiedzę i opanowanie Znaków. Wiedźmini z tej szkoły preferują metodyczne podejście do swojego fachu. Cenią sobię kontrolę nad lekkomyślność, udowadniając, że magia może być równie przydatna jak mistrzostwo w fechtunku."
+  },
+  "bear": {
+    "name": "Szkoła Niedźwiedzia",
+    "description": "Szkoła Niedźwiedzia kojarzy się z brutalną siłą, wytrzymałością i zdolnością do znoszenia bólu i cierpienia, które złamałyby słabszych wojowników. Jej wiedźmini preferują bezpośrednie, bezkompromisowe podejście, polegając na swojej ciężkiej zbroi i determinacji, by przeżyć swoich wrogów."
+  },
+  "viper": {
+    "name": "Szkoła Żmii",
+    "description": "Szkoła Żmii ceni sobie cierpliwość, precyzję i przemyślane podejście do niebezpieczeństwa. Jej wiedźmini stawiają na szybkie, zabójcze ciosy i staranne przygotowanie do walki. Rozumieją, że informacja może być równie cenna jak stal, a najlepsze zwycięstwo to takie, które zapewni się, zanim wróg w ogóle zorientuje się, że bitwa się zaczęła."
+  },
+  "manticore": {
+    "name": "Szkoła Mantikory",
+    "description": "Szkoła Mantikory kojarzy się z wiedzą alchemiczną, starannym przygotowaniem i przetrwaniem w nieprzyjaznych warunkach. Jej wiedźmini rozumieją, jak ważne jest rozsądne gospodarowanie zasobami oraz dobre wykorzystanie każdej mikstury i każdego ostrza. Zamiast polegać wyłącznie na instynkcie czy wrodzonych zdolnościach, traktują Szlak jako dyscyplinę, w której liczy się doświadczenie i dalekowzroczność."
+  }
+},
+  "traits": {
+        "adaptability": "Adaptacja",
+        "independence": "Niezależność",
+        "knowledge": "Wiedza",
+        "endurance": "Wytrzymałość",
+        "strategy": "Strategia",
+        "preparation": "Przygotowanie"
+    },
+    "languages": {
+        "en": "EN",
+        "pl": "PL"
+    }
+}

@@ -1,0 +1,167 @@
+{
+  "app": {
+    "title": "Discover Your Witcher School",
+    "intro": "Answer a series of questions to discover which Witcher school best matches your personality.",
+    "begin": "Begin the Trial",
+    "question": "Question {{current}} of {{total}}",
+    "resultTitle": "Your Witcher School",
+    "destiny": "Your destiny has been revealed",
+    "compatibility": "Your compatibility with this school: {{score}}%",
+    "profileTitle": "Your Witcher Profile",
+    "profileDescription": "Your answers reveal the traits that define your approach to the Path.",
+    "ranking": "Full Ranking",
+    "tryAgain": "Try Again",
+    "disclaimer": "This is an unofficial fan-made project inspired by The Witcher universe. It is not affiliated with, endorsed by, or sponsored by CD PROJEKT RED.",
+    "disclaimerRights": "The Witcher and related names and trademarks belong to their respective owners."
+  },
+  "questions": {
+    "1": {
+        "text": "How do you approach an unfamiliar monster?",
+        "answers": [
+            "I gather information first, but leave room to improvise when the situation changes.",
+            "I observe the creature's movements and look for a weakness I can exploit quickly.",
+            "I identify the creature and determine which techniques are most effective against it.",
+            "I prepare to withstand a difficult fight, even if I cannot predict exactly how it will unfold.",
+            "I study the creature's behaviour and wait for the perfect opportunity to strike decisively.",
+            "I prepare the appropriate potions, oils and bombs for the threats I expect to encounter."
+        ] 
+    },
+    "2": {
+        "text": "What matters most during a hunt?",
+        "answers": [
+            "Adaptability - being able to change tactics when the original plan fails.",
+            "Speed and precision - ending the fight before the enemy can gain the upper hand.",
+            "Knowledge and control - understanding the enemy and mastering the tools at my disposal.",
+            "Endurance - being able to withstand whatever the enemy throws at me.",
+            "Timing - recognising the decisive moment and striking without hesitation.",
+            "Preparation - ensuring that I have the right equipment and resources for the job."
+        ] 
+    },
+    "3": {
+        "text": "Your employer is hiding something. What do you do?",
+        "answers": [
+            "Verify the facts and make a practical decision based on what I discover.",
+            "Trust no one blindly, investigate independently and look for hidden motives.",
+            "Compare their claims with the evidence and look for logical inconsistencies.",
+            "Determine how much danger the situation presents and make sure I cannot be caught off guard.",
+            "Keep my suspicions to myself and observe what the employer does next.",
+            "Evaluate the risks and decide whether the contract is worth its potential cost."
+        ] 
+    },
+    "4": {
+        "text": "Your plan falls apart, and the situation becomes dangerous. What do you do?",
+        "answers": [
+            "Adapt my tactics and make the best use of whatever is available.",
+            "Look for an opening and turn the situation around before the enemy can react.",
+            "Stay composed, reassess the situation, and apply what I know.",
+            "Hold my ground and endure the pressure until I can regain the advantage.",
+            "Avoid rash moves and wait for an opportunity to regain control.",
+            "Conserve my resources and find the safest way to survive the encounter."
+        ] 
+    },
+    "5": {
+        "text": "Which kind of knowledge do you value most?",
+        "answers": [
+            "Practical knowledge that helps me handle unpredictable situations.",
+            "Knowledge of people, their weaknesses, and how they think.",
+            "History, theory, magic and a systematic understanding of the world.",
+            "Survival skills, combat experience and knowledge gained through hardship.",
+            "Intelligence that helps me anticipate threats and outmanouevre an opponent.",
+            "Alchemy, the properties of substances and the practical use of rare ingredients."
+        ] 
+    },
+    "6": {
+        "text": "How do you approach a problem with no obvious solution?",
+        "answers": [
+            "Combine different approaches and see what works best in practice.",
+            "Challenge the assumptions and look for a solution others have overlooked.",
+            "Break the problem into parts and analyse it methodically.",
+            "Focus on what matters most and overcome each obstacle through persistence.",
+            "Look for hidden connections and anticipate the consequences of every move.",
+            "Assess the resources available and find the most efficient solution."
+        ] 
+    },
+    "7": {
+        "text": "How do you approach risks?",
+        "answers": [
+            "I accept calculated risks, provided I can adapt if things go wrong.",
+            "I am willing to take a bold risk if the potential advantage is worth it.",
+            "I prefer to reduce uncertainty through knowledge, discipline and preparation.",
+            "I do not shy away from danger if I believe I can endure its consequences.",
+            "I take risks only when I understand the situation and see a clear path to success.",
+            "I weigh the costs, benefits and resources available before committing."
+        ] 
+    },
+    "8": {
+        "text": "Which personal weakness would be most dangerous on the Path?",
+        "answers": [
+            "Taking too much responsibility for solving other people's problems.",
+            "Resisting authority even when cooperation might be more effective.",
+            "Overanalysing a situation because I want to understand everything.",
+            "Being too stubborn to abandon an approach that is no longer working.",
+            "Being overly cautious and finding it difficult to trust others.",
+            "Relying too heavily on preparation and established methods."
+        ] 
+    },
+    "9": {
+        "text": "Someone tries to provoke you. How do you respond?",
+        "answers": [
+            "Decide whether responding is worthwhile and adapt my reaction to the situation.",
+            "Refuse to let them dictate the terms and respond in a way they do not expect.",
+            "Remain composed and avoid letting emotions cloud my judgment.",
+            "Stand my ground, especially when someone attempts to intimidate me.",
+            "Reveal as little as possible and avoid giving the other person an advantage.",
+            "Avoid wasting energy on provocations that offer no practical benefit."
+        ] 
+    },
+    "10": {
+        "text": "You discover that a monster is intelligent and capable of negotiating. What do you do?",
+        "answers": [
+            "I try to understand its motives and look for a solution that avoids unnecessary bloodshed.",
+            "I keep my guard up and look for a way to turn the negotiation to my advantage.",
+            "I seek to understand its nature, reasoning and whether coexistence is possible.",
+            "I remain cautious and make sure I can defend myself if the negotiations turn hostile.",
+            "I listen carefully, conceal my intentions and assess whether its words hide a threat.",
+            "I assess the potential consequences and decide whether dealing with it is worth the risk."
+        ] 
+    }
+  },
+  "traits": {
+    "adaptability": "Adaptability",
+    "independence": "Independence",
+    "knowledge": "Knowledge",
+    "endurance": "Endurance",
+    "strategy": "Strategy",
+    "preparation": "Preparation"
+  },
+  "schools": {
+    "wolf": {
+        "name": "School of the Wolf",
+        "description": "Balanced, resilient and highly versatile warriors, mixing classic, precise swordplay with magic and alchemy rather than relying on heavy armour or brute force. Witchers from this school value sound judgment and practical experience. They understand that surviving the Path requires more than strength alone."
+    },
+    "cat": {
+        "name": "School of the Cat",
+        "description": "The School of the Cat is associated with speed, precision, independence and an unconventional approach to combat. Its witchers favour agility and are willing to exploit weaknesses others might overlook. The Cat's school is not for those who need clear rules, it rewards cunning and the ability to act decisively."
+    },
+    "griffin": {
+        "name": "School of the Griffin",
+        "description": "The School of the Griffin places great emphasis on discipline, knowledge and the mastery of Signs. Witchers from this school favour a methodical approach. They value control over recklessness, proving that magic can be as useful as sword mastery."
+    },
+    "bear": {
+        "name": "School of the Bear",
+        "description": "The School of the Bear is associated with brute strength, endurance and the ability to withstand punishment that would break lesser fighters. Its witchers favour a direct, uncompromising approach, relying on heavy armour and the determination to outlast their enemies."
+    },
+    "viper": {
+        "name": "School of the Viper",
+        "description": "The School of the Viper favours patience, precision, and a calculated approach to danger. Its witchers rely on swift, lethal strikes and careful preparation. They understand that information can be as valuable as steel, and that the best victory is often secured before the enemy realises a battle has begun."
+    },
+    "manticore": {
+        "name": "School of the Manticore",
+        "description": "The School of the Manticore is associated with alchemical knowledge, careful preparation and survival in hostile conditions. Its witchers understand the importance of managing their resources and making every potion or blade count. Rather than relying solely on instinct or raw ability, they approach the Path as a discipline that rewards experience and foresight."
+    }
+  },
+  "languages": {
+    "en": "EN",
+    "pl": "PL"
+  }
+}

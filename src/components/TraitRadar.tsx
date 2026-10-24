@@ -8,6 +8,7 @@ import {
     Legend,
 } from "chart.js";
 
+import { useTranslation } from "react-i18next";
 import { Radar } from "react-chartjs-2";
 import type { TraitProfile } from "../engine/inference";
 
@@ -24,16 +25,16 @@ type TraitRadarProps = {
     profile: TraitProfile;
 };
 
-const traitLabels: Record<keyof TraitProfile, string> = {
-    adaptability: "Adaptability",
-    independence: "Independence",
-    knowledge: "Knowledge",
-    endurance: "Endurance",
-    strategy: "Strategy",
-    preparation: "Preparation",
-};
-
 export default function TraitRadar({ profile }: TraitRadarProps) {
+    const { t } = useTranslation();
+    const traitLabels: Record<keyof TraitProfile, string> = {
+        adaptability: t("traits.adaptability"),
+        independence: t("traits.independence"),
+        knowledge: t("traits.knowledge"),
+        endurance: t("traits.endurance"),
+        strategy: t("traits.strategy"),
+        preparation: t("traits.preparation"),
+    };
     const data = {
         labels: Object.keys(traitLabels).map(
             (trait) => traitLabels[trait as keyof TraitProfile]

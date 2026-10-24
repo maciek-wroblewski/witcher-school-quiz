@@ -1,3 +1,8 @@
+import gbFlag from "./assets/flags/gb.svg";
+import plFlag from "./assets/flags/pl.svg";
+import { useTranslation } from "react-i18next";
+import { useState } from "react";
+
 import wolfMedallion from "./assets/medallions/wolf_medallion.png";
 import catMedallion from "./assets/medallions/cat_medallion.png";
 import griffinMedallion from "./assets/medallions/griffin_medallion.png";
@@ -7,11 +12,12 @@ import manticoreMedallion from "./assets/medallions/manticore_medallion.png";
 
 import TraitRadar from "./components/TraitRadar";
 
-import { useState } from "react";
 import { questions } from "./data/questions";
 import { schools } from "./data/schools";
-import { calculateRanking } from "./engine/inference";
-import { calculateUserProfile } from "./engine/inference";
+import {
+  calculateRanking,
+  calculateUserProfile,
+} from "./engine/inference";
 
 const medallions: Record<string, string> = {
   wolf: wolfMedallion,
@@ -22,27 +28,53 @@ const medallions: Record<string, string> = {
   manticore: manticoreMedallion,
 };
 
-
 function DisclaimerFooter() {
+  const { t } = useTranslation();
+
   return (
     <footer className="site-footer">
-      <p>
-        This is an unofficial fan-made project inspired by The Witcher
-        universe. It is not affiliated with, endorsed by, or sponsored
-        by CD PROJEKT RED.
-      </p>
-      <p>
-        The Witcher and related names and trademarks belong to their
-        respective owners.
-      </p>
+      <p>{t("app.disclaimer")}</p>
+      <p>{t("app.disclaimerRights")}</p>
     </footer>
   );
 }
 
+
+function LanguageSwitcher() {
+  const { i18n } = useTranslation();
+  const currentLanguage = (i18n.resolvedLanguage ?? i18n.language ?? "en").startsWith("pl") ? "pl" : "en";
+
+  return (
+    <div className="language-switcher" aria-label="Choose language">
+      <button
+        className={currentLanguage === "en" ? "active" : ""}
+        onClick={() => i18n.changeLanguage("en")}
+        aria-pressed={currentLanguage === "en"}
+      >
+        <img src={gbFlag} alt="" />
+        <span>EN</span>
+      </button>
+
+      <span className="language-separator">|</span>
+
+      <button
+        className={currentLanguage === "pl" ? "active" : ""}
+        onClick={() => i18n.changeLanguage("pl")}
+        aria-pressed={currentLanguage === "pl"}
+      >
+        <img src={plFlag} alt="" />
+        <span>PL</span>
+      </button>
+    </div>
+  );
+}
+
 function App() {
+  const { t, i18n } = useTranslation();
   const [started, setStarted] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({});
+  const [selectedAnswers, setSelectedAnswers] =
+    useState<Record<number, number>>({});
   const [finished, setFinished] = useState(false);
 
   function handleAnswer(answerIndex: number) {
@@ -69,119 +101,128 @@ function App() {
 
   if (!started) {
     return (
-      <main>
-        <h1>Discover Your Witcher School</h1>
-        <p>
-          Answer a series of questions to discover which Witcher
-          school best matches your personality.
-        </p>
-        <button onClick={() => setStarted(true)}>
-          Begin the Trial
-        </button>
+      <>
+      <LanguageSwitcher />
+        <main>
+          <h1>{t("app.title")}</h1>
 
-        <DisclaimerFooter />
-      </main>
+          <p>{t("app.intro")}</p>
+
+          <button onClick={() => setStarted(true)}>
+            {t("app.begin")}
+          </button>
+
+          <DisclaimerFooter />
+        </main>
+      </>
     );
   }
 
   if (finished) {
     const ranking = calculateRanking(selectedAnswers);
+
     const winner = schools.find(
       (school) => school.id === ranking[0]?.schoolId
     );
 
     return (
-      <main className="result-page">
-        <h1>Your Witcher School</h1>
+      <>
+      <LanguageSwitcher />
+        <main className="result-page">
+          <h1>{t("app.resultTitle")}</h1>
 
+          {winner && (
+            <section className="winner">
+              <img
+                className="winner-medallion"
+                src={medallions[winner.id]}
+                alt={t("app.medallionAlt", {
+                  school: t(`schools.${winner.id}.name`),
+                })}
+              />
 
-        {winner && (
-          <section className="winner">
-            <img
-              className="winner-medallion"
-              src={medallions[winner.id]}
-              alt={`${winner.name} medallion`}
-            />
+              <p className="winner-label">
+                {t("app.destiny")}
+              </p>
 
-            <p className="winner-label">Your destiny has been revealed</p>
+              <h2>{t(`schools.${winner.id}.name`)}</h2>
 
-            <h2>{winner.name}</h2>
+              <div className="winner-divider">✦ ━━━━━ ✦</div>
 
-            <div className="winner-divider">✦ ━━━━━ ✦</div>
+              <p>{t(`schools.${winner.id}.description`)}</p>
 
-            <p>{winner.description}</p>
+              <p className="winner-score">
+                {t("app.compatibility", {
+                  score: ranking[0].score,
+                })}
+              </p>
+            </section>
+          )}
 
-            <p className="winner-score">
-              Your compatibility with this school: {ranking[0].score}%
-            </p>
-          </section>
-        )}
+          <div className="result-dashboard">
+            <section className="trait-section">
+              <h2>{t("app.profileTitle")}</h2>
 
+              <p>{t("app.profileDescription")}</p>
 
-        <div className="result-dashboard">
-          <section className="trait-section">
-            <h2>Your Witcher Profile</h2>
+              <TraitRadar
+                profile={calculateUserProfile(selectedAnswers)}
+              />
+            </section>
 
-            <p>
-              Your answers reveal the traits that define your approach to the Path.
-            </p>
+            <section className="ranking-section">
+              <h2>{t("app.ranking")}</h2>
 
-            <TraitRadar
-              profile={calculateUserProfile(selectedAnswers)}
-            />
-          </section>
-
-          <section className="ranking-section">
-            <h2>Full Ranking</h2>
-
-            <ol>
-              {ranking.map((result) => {
-                const school = schools.find(
-                  (item) => item.id === result.schoolId
-                );
-
-                return (
+              <ol>
+                {ranking.map((result) => (
                   <li key={result.schoolId}>
-                    {school?.name}: {result.score}%
+                    {t(`schools.${result.schoolId}.name`)}:{" "}
+                    {result.score}%
                   </li>
-                );
-              })}
-            </ol>
-          </section>
-        </div>
+                ))}
+              </ol>
+            </section>
+          </div>
 
+          <button onClick={restartQuiz}>
+            {t("app.tryAgain")}
+          </button>
 
-        <button onClick={restartQuiz}>Try Again</button>
-
-        <DisclaimerFooter />
-      </main>
+          <DisclaimerFooter />
+        </main>
+      </>
     );
   }
-
 
   const question = questions[currentQuestionIndex];
 
   return (
-    <main>
-      <p>
-        Question {currentQuestionIndex + 1} of {questions.length}
-      </p>
+    <>
+    <LanguageSwitcher />
+      <main>
+        <p>
+          {t("app.question", {
+            current: currentQuestionIndex + 1,
+            total: questions.length,
+          })}
+        </p>
 
-      <h1>{question.text}</h1>
+        <h1>{t(`questions.${question.id}.text`)}</h1>
 
-      <div>
-        {question.answers.map((answer, index) => (
-          <button
-            key={index}
-            onClick={() => handleAnswer(index)}
-          >
-            {answer.text}
-          </button>
-        ))}
-      </div>
-      
-      <DisclaimerFooter />
-    </main>
+        <div>
+          {question.answers.map((answer, index) => (
+            <button
+              key={index}
+              onClick={() => handleAnswer(index)}
+            >
+              {t(`questions.${question.id}.answers.${index}`)}
+            </button>
+          ))}
+        </div>
+
+        <DisclaimerFooter />
+      </main>
+    </>
   );
 }
 

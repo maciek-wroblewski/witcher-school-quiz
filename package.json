@@ -14,7 +14,8 @@
     "i18next": "^26.5.10",
     "react": "^19.3.1",
     "react-chartjs-2": "^5.3.1",
-    "react-dom": "^19.3.1"
+    "react-dom": "^19.3.1",
+    "react-i18next": "^17.1.8"
   },
   "devDependencies": {
     "@types/node": "^24.19.2",

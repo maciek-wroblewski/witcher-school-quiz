@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&display=swap');
 
 :root {
@@ -91,7 +90,7 @@ p {
     line-height: 1.8;
 }
 
-main > p:first-child {
+main>p:first-child {
     text-align: center;
     color: #795d39;
     font-style: italic;
@@ -133,7 +132,7 @@ button:active {
     transform: translateY(0);
 }
 
-main > div {
+main>div {
     margin-top: 28px;
 }
 
@@ -168,6 +167,7 @@ li::marker {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
@@ -349,5 +349,65 @@ li::marker {
         margin-top: 32px;
         padding: 16px 8px 8px;
         font-size: 11px;
+    }
+}
+
+
+.language-switcher {
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    width: fit-content;
+    padding: 8px 12px;
+
+    border: 1px solid rgba(201, 165, 92, 0.6);
+    border-radius: 8px;
+
+    background: rgba(24, 20, 17, 0.95);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.language-switcher button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    padding: 4px 2px;
+    border: none;
+    background: transparent;
+    color: #b9ad99;
+    font: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.language-switcher button img {
+    display: block;
+    width: 20px;
+    height: 14px;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+.language-switcher button:hover,
+.language-switcher button.active {
+    color: #e2bd70;
+}
+
+.language-separator {
+    color: #75654d;
+}
+
+@media (max-width: 600px) {
+    .language-switcher {
+        top: 12px;
+        right: 12px;
     }
 }
