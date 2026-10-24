@@ -70,7 +70,7 @@ function LanguageSwitcher() {
 }
 
 function App() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [started, setStarted] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] =
@@ -210,7 +210,7 @@ function App() {
         <h1>{t(`questions.${question.id}.text`)}</h1>
 
         <div>
-          {question.answers.map((answer, index) => (
+          {question.answers.map((_, index) => (
             <button
               key={index}
               onClick={() => handleAnswer(index)}
