@@ -56,7 +56,10 @@ export default function TraitRadar({ profile }: TraitRadarProps) {
 
     const options = {
         responsive: true,
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
+        layout: {
+            padding: 4,
+        },
         scales: {
             r: {
                 min: 1,
@@ -76,29 +79,22 @@ export default function TraitRadar({ profile }: TraitRadarProps) {
                 },
                 angleLines: {
                     color: "rgba(105, 72, 39, 0.4)",
+                    lineWidth: 1.2,
                 },
                 pointLabels: {
                     color: "#59391f",
+                    padding: 8,
                     font: {
                         family: "Cinzel, serif",
-                        size: 12,
+                        size: 11,
                         weight: "bold" as const,
                     },
-                    padding: 12,
                 },
             },
         },
         plugins: {
             legend: {
                 display: false,
-            },
-            tooltip: {
-                titleFont: {
-                    family: "Cinzel, serif",
-                },
-                bodyFont: {
-                    family: "IM Fell English, serif",
-                },
             },
         },
     };

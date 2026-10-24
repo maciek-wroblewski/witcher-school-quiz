@@ -72,7 +72,7 @@ function App() {
     );
 
     return (
-      <main>
+      <main className="result-page">
         <h1>Your Witcher School</h1>
 
 
@@ -98,32 +98,39 @@ function App() {
           </section>
         )}
 
-        <section className="trait-section">
-          <h2>Your Witcher Profile</h2>
-          <p>
-            Your answers reveal the traits that define your approach to the Path.
-          </p>
 
-          <TraitRadar
-            profile={calculateUserProfile(selectedAnswers)}
-          />
-        </section>
+        <div className="result-dashboard">
+          <section className="trait-section">
+            <h2>Your Witcher Profile</h2>
 
+            <p>
+              Your answers reveal the traits that define your approach to the Path.
+            </p>
 
-        <h2>Full Ranking</h2>
-        <ol>
-          {ranking.map((result) => {
-            const school = schools.find(
-              (item) => item.id === result.schoolId
-            );
+            <TraitRadar
+              profile={calculateUserProfile(selectedAnswers)}
+            />
+          </section>
 
-            return (
-              <li key={result.schoolId}>
-                {school?.name}: {result.score}%
-              </li>
-            );
-          })}
-        </ol>
+          <section className="ranking-section">
+            <h2>Full Ranking</h2>
+
+            <ol>
+              {ranking.map((result) => {
+                const school = schools.find(
+                  (item) => item.id === result.schoolId
+                );
+
+                return (
+                  <li key={result.schoolId}>
+                    {school?.name}: {result.score}%
+                  </li>
+                );
+              })}
+            </ol>
+          </section>
+        </div>
+
 
         <button onClick={restartQuiz}>Try Again</button>
       </main>
